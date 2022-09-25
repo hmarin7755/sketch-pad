@@ -1,3 +1,6 @@
+let color = "black"
+
+
 document.addEventListener("DOMContentLoaded", function () {
   createGrid(16);
   let btnPopup = document.querySelector("#popup");
@@ -8,19 +11,46 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// const blackBtn = document.querySelector('.black');
+// blackBtn.addEventListener("click", setColor('black') );
+
+
+// const randomBtn = document.querySelector('.random');
+// randomBtn.addEventListener("click", setColor('random') );
+
 function createGrid(size) {
   let canvas = document.querySelector(".canvas");
   canvas.style.gridTemplateColumns = `repeat(${size},1fr)`;
   canvas.style.gridTemplateRows = `repeat(${size},1fr)`;
+  clearCanvas();
 
   let numDivs = size * size;
   for (let i = 0; i < numDivs; i++) {
     let div = document.createElement("div");
-    div.addEventListener('mouseover', function(){
-        div.style.backgroundColor = "black";
-    });
+    div.addEventListener('mouseover', colorDiv);
     canvas.insertAdjacentElement("beforeend", div);
   }
+}
+
+function colorDiv(){
+  if(color == "random"){
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 65%)`
+  }
+  else if(color == "black"){
+    this.style.backgroundColor = "black"
+  }
+  else if(color == 'white'){
+    this.style.backgroundColor = "white"
+  }
+}
+
+function setColor(colorChoice){
+  color = colorChoice;
+}
+
+function clearCanvas(){
+  let divs = document.querySelectorAll('div')
+  divs.forEach((div => div.style.backgroundColor = "white"));
 }
 
 function getSize() {
@@ -28,9 +58,9 @@ function getSize() {
   let message = document.querySelector("#message");
   if (input === "") {
     // message.innerHTML = "Enter a number between 1 and 100";
-    alert("Enter a number between 1 - 100");
+    alert("Enter a number between 1 - 100 to change grid size");
   } else if (input <= 0 || input > 100) {
-    alert("Enter a number between 1 - 100");
+    alert("Enter a number between 1 - 100 to change grid size");
     // message.innerHTML = "Enter a number between 1 and 100";
   } else {
     message.innerHTML = `${input}x${input}`;
