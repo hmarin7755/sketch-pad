@@ -1,3 +1,21 @@
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.header button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 2px;
+}
 .title {
   display: flex;
   justify-content: center;
@@ -16,21 +34,5 @@
     display: grid;
   height: 500px;
   width: 500px;
-
-
-  /* background-color: antiquewhite; */
   border: 2px solid red;
 }
-/* .gridsquare {
- 
-  color: blueviolet;
-  padding: 10px;
-  border: 2px solid green;
-}
-.row {
-  background-color: rgb(50, 176, 176);
-  border: 2px solid blue;
-  display: flex;
-  flex-direction: column;
-
-} */
