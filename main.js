@@ -11,12 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// const blackBtn = document.querySelector('.black');
-// blackBtn.addEventListener("click", setColor('black') );
 
-
-// const randomBtn = document.querySelector('.random');
-// randomBtn.addEventListener("click", setColor('random') );
 
 function createGrid(size) {
   let canvas = document.querySelector(".canvas");
@@ -33,6 +28,7 @@ function createGrid(size) {
 }
 
 function colorDiv(){
+  
   if(color == "random"){
       this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 65%)`
   }
@@ -49,7 +45,7 @@ function setColor(colorChoice){
 }
 
 function clearCanvas(){
-  let divs = document.querySelectorAll('div')
+  let divs = document.querySelectorAll('.canvas > div')
   divs.forEach((div => div.style.backgroundColor = "white"));
 }
 
