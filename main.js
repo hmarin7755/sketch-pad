@@ -1,27 +1,17 @@
-let color = "black";
-let click = false;
+let color = "black"
+
 
 document.addEventListener("DOMContentLoaded", function () {
   createGrid(16);
-
-  document.querySelector("body").addEventListener("click", function (e) {
-    if (e.target.tagName != "BUTTON") {
-      click = !click;
-      let draw = document.querySelector("#draw");
-      if (click) {
-        draw.innerHTML = "Click Anywhere to <span style = 'color: green'> Enable</span>/Disable Drawing";
-      } else {
-        draw.innerHTML = "Click Anywhere to Enable/<span style = 'color: red'>Disable</span> Drawing";
-      }
-    }
-  });
-
   let btnPopup = document.querySelector("#popup");
   btnPopup.addEventListener("click", function () {
     let size = getSize();
     createGrid(size);
+  
   });
 });
+
+
 
 function createGrid(size) {
   let canvas = document.querySelector(".canvas");
@@ -32,30 +22,31 @@ function createGrid(size) {
   let numDivs = size * size;
   for (let i = 0; i < numDivs; i++) {
     let div = document.createElement("div");
-    div.addEventListener("mouseover", colorDiv);
+    div.addEventListener('mouseover', colorDiv);
     canvas.insertAdjacentElement("beforeend", div);
   }
 }
 
-function colorDiv() {
-  if(click){
-  if (color == "random") {
-    this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 65%)`;
-  } else if (color == "black") {
-    this.style.backgroundColor = "black";
-  } else if (color == "white") {
-    this.style.backgroundColor = "white";
+function colorDiv(){
+  
+  if(color == "random"){
+      this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 65%)`
+  }
+  else if(color == "black"){
+    this.style.backgroundColor = "black"
+  }
+  else if(color == 'white'){
+    this.style.backgroundColor = "white"
   }
 }
-}
 
-function setColor(colorChoice) {
+function setColor(colorChoice){
   color = colorChoice;
 }
 
-function clearCanvas() {
-  let divs = document.querySelectorAll(".canvas > div");
-  divs.forEach((div) => (div.style.backgroundColor = "white"));
+function clearCanvas(){
+  let divs = document.querySelectorAll('.canvas > div')
+  divs.forEach((div => div.style.backgroundColor = "white"));
 }
 
 function getSize() {
